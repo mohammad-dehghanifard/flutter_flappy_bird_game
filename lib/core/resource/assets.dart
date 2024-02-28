@@ -5,7 +5,7 @@ class GameAssets {
   static const pipe = "pipe.png";
   static const rotatedPipe = "pipe_rotated.png";
 
-  static const birdMid = "bird_midflap.png";
+  static const birdIdle = "bird_midflap.png";
   static const birdUp = "bird_upflap.png";
   static const birdDown = "bird_downflap.png";
 
