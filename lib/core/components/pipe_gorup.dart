@@ -30,5 +30,10 @@ class PipeGroup extends PositionComponent with HasGameRef<FlappyGame> {
   void update(double dt) {
     super.update(dt);
     position.x -= GameConfig.gameSpeed * dt;
+
+    if(position.x < -10) {
+        removeFromParent();
+        print("removed....");
+    }
   }
 }
