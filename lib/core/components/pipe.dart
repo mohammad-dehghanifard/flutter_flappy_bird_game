@@ -26,7 +26,7 @@ class Pipe extends SpriteComponent with HasGameRef<FlappyGame> {
         sprite = Sprite(rotatePipe);
     }
     add(RectangleHitbox());
-    super.onLoad();
+
   }
   
 }
