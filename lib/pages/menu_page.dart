@@ -10,16 +10,22 @@ class MenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     game.pauseEngine();
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(GameAssets.menu),
-            fit: BoxFit.cover
-          )
+      body: GestureDetector(
+        onTap: () {
+          game.overlays.remove(name);
+          game.resumeEngine();
+        },
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(GameAssets.menu),
+              fit: BoxFit.cover
+            )
+          ),
+          child: Image.asset(GameAssets.message),
         ),
-        child: Image.asset(GameAssets.message),
       ),
     );
   }
