@@ -10,20 +10,25 @@ class GameOverPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.black38,
-      child: Column(
-        children: [
-          Image.asset(GameAssets.gameOver),
-          const SizedBox(height: 20),
-          ElevatedButton(
-              onPressed: onRestartTap,
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
-              child: const Text("Restart!"))
-        ],
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(GameAssets.gameOver),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                onPressed: onRestartTap,
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.orange,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+                child: const Text("Restart!",style: TextStyle(color: Colors.black38),))
+          ],
+        ),
       ),
     );
   }
 
   void onRestartTap() {
+    game.bird.resetGame();
     game.overlays.remove(name);
     game.resumeEngine();
   }

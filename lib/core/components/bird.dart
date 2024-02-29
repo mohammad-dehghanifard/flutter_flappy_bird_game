@@ -6,8 +6,10 @@ import 'package:flutter_flappy_bird_game/core/config/game_config.dart';
 import 'package:flutter_flappy_bird_game/core/resource/assets.dart';
 import 'package:flutter_flappy_bird_game/core/resource/bird_movement.dart';
 import 'package:flutter_flappy_bird_game/game/flappy_game.dart';
+import 'package:flutter_flappy_bird_game/pages/game_over_page.dart';
 
 class Bird extends SpriteGroupComponent<BirdMovement> with HasGameRef<FlappyGame>,CollisionCallbacks {
+  int score = 0;
   @override
   Future<void> onLoad() async {
      final idleBirdSprite = await gameRef.loadSprite(GameAssets.birdIdle);
@@ -53,8 +55,14 @@ class Bird extends SpriteGroupComponent<BirdMovement> with HasGameRef<FlappyGame
     current = BirdMovement.up;
   }
 
+  void resetGame(){
+    position = Vector2(gameRef.size.x / 6 , gameRef.size.y / 2);
+    score = 0;
+  }
+
   void gameOver() {
     gameRef.pauseEngine();
+    gameRef.overlays.add(GameOverPage.name);
   }
 
 }
